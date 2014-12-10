@@ -17,7 +17,7 @@ namespace TDD.SystemPermissionSpec
         [Test]
         public void Is_Requested()
         {
-            permission.GetPermission().Should().Be(SystemPermission.Requested);
+            permission.GetPermission().Should().Be(SystemPermission.Permission.Requested);
         }
 
         [Test]
@@ -31,7 +31,7 @@ namespace TDD.SystemPermissionSpec
         {
             permission.Grant();
 
-            permission.GetPermission().Should().Be(SystemPermission.Requested);
+            permission.GetPermission().Should().Be(SystemPermission.Permission.Requested);
         }
 
         [Test]
@@ -39,7 +39,7 @@ namespace TDD.SystemPermissionSpec
         {
             permission.Deny();
 
-            permission.GetPermission().Should().Be(SystemPermission.Requested);
+            permission.GetPermission().Should().Be(SystemPermission.Permission.Requested);
         }
 
         [Test]
@@ -47,7 +47,7 @@ namespace TDD.SystemPermissionSpec
         {
             permission.Claim();
 
-            permission.GetPermission().Should().Be(SystemPermission.Claimed);
+            permission.GetPermission().Should().Be(SystemPermission.Permission.Claimed);
         }
     }
 }

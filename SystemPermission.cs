@@ -8,34 +8,40 @@ namespace TDD
 {
     public class SystemPermission
     {
+        public enum Permission
+        {
+            Claimed,
+            Granted,
+            Denied,
+            Requested
+        }
         private bool granted;
 
-        public static readonly string Requested = "Requested";
-        public static readonly string Claimed = "Claimed";
-        public static readonly string Denied = "Denied";
-        public static readonly string Granted = "Granted";
-        private string permission;
+        private Permission permission;
 
         public SystemPermission()
         {
             granted = false;
-            SetPermission(Requested);
+            SetPermission(Permission.Requested);
         }
 
-        private void SetPermission(string newPermission)
+
+        private void SetPermission(Permission newPermission)
         {
             this.permission = newPermission;
         }
 
-        public string GetPermission()
+        public Permission GetPermission()
         {
             return this.permission;
         }
 
         public void Claim()
         {
-            if (this.permission == SystemPermission.Requested)
-                this.permission = SystemPermission.Claimed;
+            if (GetPermission().Equals(Permission.Requested))
+            {
+                SetPermission(Permission.Claimed);
+            }
         }
 
         public bool IsGranted()
@@ -45,17 +51,19 @@ namespace TDD
 
         public void Grant()
         {
-            if (this.permission == SystemPermission.Claimed)
+            if (GetPermission().Equals(Permission.Claimed))
             {
-                this.permission = SystemPermission.Granted;
+                SetPermission(Permission.Granted);
                 this.granted = true;
             }
         }
 
         public void Deny()
         {
-            if (this.permission == SystemPermission.Claimed)
-                this.permission = SystemPermission.Denied;
+            if (GetPermission().Equals(Permission.Claimed))
+            {
+                SetPermission(Permission.Denied);
+            }
         }
     }
 }

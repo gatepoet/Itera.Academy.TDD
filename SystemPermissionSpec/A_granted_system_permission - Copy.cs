@@ -28,7 +28,7 @@ namespace TDD.SystemPermissionSpec
         {
             systemPermission.Deny();
 
-            systemPermission.GetPermission().Should().Be(SystemPermission.Denied);
+            systemPermission.GetPermission().Should().Be(SystemPermission.Permission.Denied);
         }
 
         [Test]
@@ -36,7 +36,7 @@ namespace TDD.SystemPermissionSpec
         {
             systemPermission.Claim();
 
-            systemPermission.GetPermission().Should().Be(SystemPermission.Denied);
+            systemPermission.GetPermission().Should().Be(SystemPermission.Permission.Denied);
         }
 
         [Test]
@@ -44,7 +44,7 @@ namespace TDD.SystemPermissionSpec
         {
             systemPermission.Grant();
 
-            systemPermission.GetPermission().Should().Be(SystemPermission.Denied);
+            systemPermission.GetPermission().Should().Be(SystemPermission.Permission.Denied);
         }
     }
 }
