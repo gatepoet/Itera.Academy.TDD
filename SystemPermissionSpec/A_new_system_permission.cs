@@ -6,48 +6,52 @@ namespace TDD.SystemPermissionSpec
     [TestFixture]
     public class A_new_system_permission
     {
-        private SystemPermission permission;
+        private SystemPermission systemPermission;
 
         [SetUp]
         public void Setup()
         {
-            permission = new SystemPermission();
+            systemPermission = new SystemPermission();
         }
 
         [Test]
         public void Is_Requested()
         {
-            permission.GetPermission().Should().Be(SystemPermission.Permission.Requested);
+            systemPermission.Permission
+                .Should().Be(Permission.Requested);
         }
 
         [Test]
         public void Is_not_granted()
         {
-            permission.IsGranted().Should().Be(false);
+            systemPermission.Granted.Should().Be(false);
         }
 
         [Test]
         public void Does_not_allow_granting()
         {
-            permission.Grant();
+            systemPermission.Grant();
 
-            permission.GetPermission().Should().Be(SystemPermission.Permission.Requested);
+            systemPermission.Permission
+                .Should().Be(Permission.Requested);
         }
 
         [Test]
         public void Does_not_allow_denying()
         {
-            permission.Deny();
+            systemPermission.Deny();
 
-            permission.GetPermission().Should().Be(SystemPermission.Permission.Requested);
+            systemPermission.Permission
+                .Should().Be(Permission.Requested);
         }
 
         [Test]
         public void Allows_claiming()
         {
-            permission.Claim();
+            systemPermission.Claim();
 
-            permission.GetPermission().Should().Be(SystemPermission.Permission.Claimed);
+            systemPermission.Permission
+                .Should().Be(Permission.Claimed);
         }
     }
 }

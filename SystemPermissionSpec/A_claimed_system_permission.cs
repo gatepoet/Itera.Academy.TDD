@@ -19,7 +19,8 @@ namespace TDD.SystemPermissionSpec
         [Test]
         public void Is_not_granted()
         {
-            systemPermission.IsGranted().Should().Be(false);
+            systemPermission.Granted
+                .Should().Be(false);
         }
 
         [Test]
@@ -27,7 +28,8 @@ namespace TDD.SystemPermissionSpec
         {
             systemPermission.Claim();
 
-            systemPermission.GetPermission().Should().Be(SystemPermission.Permission.Claimed);
+            systemPermission.Permission
+                .Should().Be(Permission.Claimed);
         }
 
         [Test]
@@ -35,7 +37,8 @@ namespace TDD.SystemPermissionSpec
         {
             systemPermission.Grant();
 
-            systemPermission.GetPermission().Should().Be(SystemPermission.Permission.Granted);
+            systemPermission.Permission
+                .Should().Be(Permission.Granted);
         }
 
         [Test]
@@ -43,7 +46,8 @@ namespace TDD.SystemPermissionSpec
         {
             systemPermission.Deny();
 
-            systemPermission.GetPermission().Should().Be(SystemPermission.Permission.Denied);
+            systemPermission.Permission
+                .Should().Be(Permission.Denied);
         }
     }
 }

@@ -8,13 +8,6 @@ namespace TDD
 {
     public class SystemPermission
     {
-        public enum Permission
-        {
-            Claimed,
-            Granted,
-            Denied,
-            Requested
-        }
         private bool granted;
 
         private Permission permission;
@@ -25,33 +18,33 @@ namespace TDD
             SetPermission(Permission.Requested);
         }
 
+        public bool Granted
+        {
+            get { return granted; }
+        }
+
+        public Permission Permission
+        {
+            get { return permission; }
+        }
+
 
         private void SetPermission(Permission newPermission)
         {
             this.permission = newPermission;
         }
 
-        public Permission GetPermission()
-        {
-            return this.permission;
-        }
-
         public void Claim()
         {
-            if (GetPermission().Equals(Permission.Requested))
+            if (this.Permission.Equals(Permission.Requested))
             {
                 SetPermission(Permission.Claimed);
             }
         }
 
-        public bool IsGranted()
-        {
-            return this.granted;
-        }
-
         public void Grant()
         {
-            if (GetPermission().Equals(Permission.Claimed))
+            if (this.Permission.Equals(Permission.Claimed))
             {
                 SetPermission(Permission.Granted);
                 this.granted = true;
@@ -60,7 +53,7 @@ namespace TDD
 
         public void Deny()
         {
-            if (GetPermission().Equals(Permission.Claimed))
+            if (this.Permission.Equals(Permission.Claimed))
             {
                 SetPermission(Permission.Denied);
             }
